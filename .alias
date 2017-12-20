@@ -1,0 +1,27 @@
+#!/bin/bash
+
+screen-reattach(){
+    SESSIONNAME=${1:-tmux}
+    which tmux &> /dev/null
+    if [ $? -eq 0 ]
+    then
+        tmux -2 new -A -s $SESSIONNAME
+    else
+        screen -R -d $SESSIONNAME
+    fi
+}
+export -f screen-reattach
+alias sr="screen-reattach"
+
+alias dos='export PS1=$C_COLON_BACKSLASH'
+alias dstatall='dstat -larm --top-io --top-latency 10'
+alias fgrep="find . | awk '!/CVS|\.git|\.svn|_Stub|\.#/  {print \$0;}' | sed 's/\ /\\\ /g' | xargs grep --color=always -in "
+alias ls="ls -hl --color"
+alias gitclean='git fetch -p | git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
+alias gitpp="git pull --rebase && git push"
+alias grepc="grep --color=always -i"
+alias htop="TERM=screen htop"
+
+if [[ -f "$HOME/.local.alias" ]]; then
+    source $HOME/.local.alias
+fi
