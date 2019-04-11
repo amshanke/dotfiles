@@ -78,6 +78,7 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 
 let g:AutoPairsUseInsertedCount=1
+let g:go_version_warning=0
 
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1

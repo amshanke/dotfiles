@@ -1,0 +1,6 @@
+[user]
+	name = Alex Shanker
+[credential]
+	helper = store
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
